@@ -1,7 +1,7 @@
 # Freebsd on Acer Nitro AN515-51/58-XXX Series Laptops
 
 
-## 14-stable and 14-release changes to enable mouspad and webcam
+## 14-stable and 15-current changes to enable mouspad and webcam
 
 These laptops typically come in a variety of hardware sku configurations:
   - AMD 7000 and above Ryzen cpus
@@ -105,7 +105,7 @@ drive partition or a second drive. Both options require the use of rEFind https:
 
 
 2) Enable the mousepad. Change the laptop mousepad from iic to psm protocol as the iic protocol is not supported. To do so one must enter the BIOS advanced mode.
-  ```
+    ```
     a) Press Fn+Tab three times. Reboot the laptop.
     b) Press F4, 4, R, V, F5, 5, T, G, B, F6, 6, Y, H, N while the laptop is turned off.
     c) Hold Fn+Tab while starting the computer, before entering the BIOS. Press F2 to enter the bios. Type ctrl-s.
@@ -114,7 +114,7 @@ drive partition or a second drive. Both options require the use of rEFind https:
     e) Change the iic value to psm:
    			    Touchpad:		psm
     f) Press F10 to save and exit.
-```
+    ```
 
 3) Enable the webcam. Be sure the _cuse_ module is loaded into the kernel. At the command prompt type:
    ```
@@ -130,7 +130,7 @@ drive partition or a second drive. Both options require the use of rEFind https:
    kldload cuse
    ```
 
-4) Change webcamd uvc_driver.c source file and rebuild. (NOTE: the identical change was required for Ubuntu 23.10 on the same hardware.)
+4) Change webcamd uvc_driver.c source file and rebuild. (NOTE: the identical change was required for Ubuntu 23.10 on the same laptop hardware.)
 
    Determine that the webcam was detected at boot. At the command prompt type:
    ```
