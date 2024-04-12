@@ -15,7 +15,7 @@ Camera and mousepad
     f) Press F10 to save and exit.
 ```
 
-2) Change webcamd source file and rebuild. At the command prompt type:
+2) Change webcamd uvc_driver.c source file and rebuild. At the command prompt type:
    ```
    lsusb
    ```
@@ -23,4 +23,18 @@ Camera and mousepad
    ```
    Bus /dev/usb Device /dev/ugen1.3: ID 0408:4035 Quanta Computer, Inc.
    ```
+
+   On this hardware a variety of Quanta products IDs may be shown.
+
+   Navigate to ports/multimedia/webcamd.
+   ```
+   cd /usr/ports/webcamd
+   make do-configure
+   ```
+
+   Webcamd will be downloaded and configured but not built.
+   ```
+   cd /usr/ports/multimedia/webcamd/work/linux-5.17-rc1/drivers/media/usb/uvc
+   ```
+   
    
