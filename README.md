@@ -175,76 +175,76 @@ Typically these laptops are delived with Windows 11 installed on an internal 500
           .uvc_version = 0x010a, } },
   
 
-  Note the ending comma "," before the start of the next section.
+    Note the ending comma "," before the start of the next section.
 
-  Build webcamd. 
-  ```
-  cd /usr/ports/multimedia/webcamd
-  make
-  make install
-  ```
+    Build webcamd. 
+    ```
+    cd /usr/ports/multimedia/webcamd
+    make
+    make install
+    ```
 
-Test the webcam. At the command prompt type:
-```
-webcamd
-```
+    Test the webcam. At the command prompt type:
+    ```
+    webcamd
+    ```
 
-A list of USB devices should be shown.
-```
-Available device(s):
-webcamd [-d ugen0.1] -N Intel-XHCI-root-HUB -S unknown -M 0
-webcamd [-d ugen1.1] -N Intel-XHCI-root-HUB -S unknown -M 1
-webcamd [-d ugen1.2] -N vendor-0x1ea7-2-4G-Mouse -S unknown -M 0
-webcamd [-d ugen1.3] -N Quanta-ACER-HD-User-Facing -S 01-00-00 -M 0
-webcamd [-d ugen1.4] -N vendor-0x8087-product-0x0026 -S unknown -M 0
-Show webcamd usage:
-webcamd -h
-```
+    A list of USB devices should be shown.
+    ```
+    Available device(s):
+    webcamd [-d ugen0.1] -N Intel-XHCI-root-HUB -S unknown -M 0
+    webcamd [-d ugen1.1] -N Intel-XHCI-root-HUB -S unknown -M 1
+    webcamd [-d ugen1.2] -N vendor-0x1ea7-2-4G-Mouse -S unknown -M 0
+    webcamd [-d ugen1.3] -N Quanta-ACER-HD-User-Facing -S 01-00-00 -M 0
+    webcamd [-d ugen1.4] -N vendor-0x8087-product-0x0026 -S unknown -M 0
+    Show webcamd usage:
+    webcamd -h
+    ```
 
-Run webcamd with the camera arguments shown in the output above. At the command prompt type:
-```
-/usr/ports/multimedia/webcamd]# webcamd -d ugen1.3 -N Quanta-ACER-HD-User-Facing -S 01-00-00 -M 0
-```
+    Run webcamd with the camera arguments shown in the output above. At the command prompt type:
+    ```
+    /usr/ports/multimedia/webcamd]# webcamd -d ugen1.3 -N Quanta-ACER-HD-User-Facing -S 01-00-00 -M 0
+    ```
+    
+    One should see webcamd attach to the video devices.
+    ```
+    webcamd 73114 - - Attached to ugen1.3[0]
+    webcamd 73114 - - Creating /dev/video0
+    webcamd 73114 - - Creating /dev/video1
+    ```
 
-One should see webcamd attach to the video devices.
-```
-webcamd 73114 - - Attached to ugen1.3[0]
-webcamd 73114 - - Creating /dev/video0
-webcamd 73114 - - Creating /dev/video1
-```
+    Video applications may now use the _/dev/videoX_ device nodes. At the command prompt type:
+    ```
+    pkg install pwcview
+    pwcview
+    ```
 
-Video applications may now use the _/dev/videoX_ device nodes. At the command prompt type:
-```
-pkg install pwcview
-pwcview
-```
+    The webcam green led will turn on and a new window opens with image.
+    To make _webcamd_ start at boot, at the command prompt type:
+       ```
+       vi /etc/rc.conf
+       ```
+       Add this line to the file.
+       ```
+       webcamd_enable="YES"
+      ```
 
-The webcam green led will turn on and a new window opens with image.
-To make _webcamd_ start at boot, at the command prompt type:
-   ```
-   vi /etc/rc.conf
-   ```
-   Add this line to the file.
-   ```
-   webcamd_enable="YES"
-  ```
+    The device nodes _/dev/videoX_ are owned by webcamd. To make them accessible to $USER at the command prompt type:
+    ```
+    vi /etc/group
+    ```
+    
+    Add $USER to the _webcamd_ group to access the laptop webcam. 
+    ```
+    webcamd:*:145:$USER
+    ```
+    Where $USER is the current login name. Login as $USER. At the command prompt type:
+    ```
+    pwcview -d /dev/video0
+    ```
 
-The device nodes _/dev/videoX_ are owned by webcamd. To make them accessible to $USER at the command prompt type:
-```
-vi /etc/group
-```
-
-Add $USER to the _webcamd_ group to access the laptop webcam. 
-```
-webcamd:*:145:$USER
-```
-Where $USER is the current login name. Login as $USER. At the command prompt type:
-```
-pwcview -d /dev/video0
-```
-
-The webcam green led will turn on and a new window opens with image.
-Tested with firefox, chromium, and zoom.
+    The webcam green led will turn on and a new window opens with image.
+    Tested with firefox, chromium, and zoom.
 
 
 
