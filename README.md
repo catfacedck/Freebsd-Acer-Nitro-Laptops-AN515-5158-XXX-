@@ -131,7 +131,10 @@ To make the _webcamd_ start at boot, at the command prompt type:
 
 The device nodes _/dev/videoX_ are owned by webcamd. To make them accessible to $USER at the command prompt type:
 ```
-chown $USER
+vi /etc/group
+```
+
+Add $USER to the _webcamd_ group so they may access the laptop webcam. Tested with firefox, chromium, and zoom.
 
 
 
