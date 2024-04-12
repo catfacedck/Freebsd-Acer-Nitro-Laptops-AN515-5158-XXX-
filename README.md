@@ -32,7 +32,8 @@ These laptops typically come in a variety of hardware sku configurations:
 
 ### **_Step-by step install procedure for mousepad and webcam:_**
 
-Typically these laptops are delived with Windows 11 installed on an internal 500 GB or 1 GD drive. Read the handbook to do a zfs root install.
+Typically these laptops are delived with Windows 11 installed on an internal 500 GB or 1 GB drive. Read the handbook, do a zfs root install on a different
+drive partition or a second drive. Both options require the use of rEFind https://www.rodsbooks.com/refind/ for booting.
 
 1) Add the following content to /etc/sysctl.conf, /boot/loader.conf, and /etc/rc.conf as a baseline.
 
@@ -220,16 +221,14 @@ Typically these laptops are delived with Windows 11 installed on an internal 500
     ```
 
     The webcam green led will turn on and a new window opens with image.
-    To make _webcamd_ start at boot, at the command prompt type:
-       ```
-       vi /etc/rc.conf
-       ```
-       Add this line to the file.
-       ```
+    To make _webcamd_ start at boot, add this line to the _/etc/rc.conf_ file.
+   
+    ```
        webcamd_enable="YES"
-      ```
+    ```
 
     The device nodes _/dev/videoX_ are owned by webcamd. To make them accessible to $USER at the command prompt type:
+   
     ```
     vi /etc/group
     ```
@@ -238,7 +237,9 @@ Typically these laptops are delived with Windows 11 installed on an internal 500
     ```
     webcamd:*:145:$USER
     ```
+    
     Where $USER is the current login name. Login as $USER. At the command prompt type:
+   
     ```
     pwcview -d /dev/video0
     ```
