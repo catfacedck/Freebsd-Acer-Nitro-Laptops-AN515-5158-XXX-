@@ -15,4 +15,12 @@ Camera and mousepad
     f) Press F10 to save and exit.
 ```
 
-2) 
+2) Change webcamd source file and rebuild. At the command prompt type:
+   ```
+   lsusb
+   ```
+   The webcam (Quanta) should be shown along with an ID as part of the messages.
+   ```
+   Bus /dev/usb Device /dev/ugen1.3: ID 0408:4035 Quanta Computer, Inc.
+   ```
+   
