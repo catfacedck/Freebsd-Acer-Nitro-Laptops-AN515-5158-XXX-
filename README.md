@@ -120,7 +120,7 @@ pwcview
 ```
 
 The webcam green led will turn on and a new window opens with image.
-To make the _webcamd_ start at boot, at the command prompt type:
+To make _webcamd_ start at boot, at the command prompt type:
    ```
    vi /etc/rc.conf
    ```
