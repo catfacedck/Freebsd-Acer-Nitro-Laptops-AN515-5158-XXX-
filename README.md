@@ -28,9 +28,11 @@ Camera and mousepad
    ugen1.3: <Quanta ACER HD User Facing> at usbus1
    ```
    If the webcam was not detected by the system go look for the trouble before continuing. On this hardware a variety of Quanta products IDs may be shown.
+
+
+   > [ !NOTE]
+   > The ugen number, e.g. ugenx.y, depends upon how many USB devices are attached to the system.
    
-   >[!Note]
-   >The ugen number, e.g. ugenx.y, depends upon how many USB devices are attached to the system.
 
    Navigate to ports/multimedia/webcamd.
    ```
