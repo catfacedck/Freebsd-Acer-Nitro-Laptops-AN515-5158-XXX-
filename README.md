@@ -15,7 +15,7 @@ Camera and mousepad
     f) Press F10 to save and exit.
 ```
 
-2) Change webcamd uvc_driver.c source file and rebuild. At the command prompt type:
+2) Change webcamd uvc_driver.c source file and rebuild. First, dtermine that the webcam was detected at boot. At the command prompt type:
    ```
    lsusb
    ```
@@ -23,8 +23,13 @@ Camera and mousepad
    ```
    Bus /dev/usb Device /dev/ugen1.3: ID 0408:4035 Quanta Computer, Inc.
    ```
-
-   On this hardware a variety of Quanta products IDs may be shown.
+   This same information is provided by _dmesg_:
+   ```
+   ugen1.3: <Quanta ACER HD User Facing> at usbus1
+   ```
+   If the webcam was not detected by the system go look for the trouble before continuing. On this hardware a variety of Quanta products IDs may be shown.
+   >[!Note]
+   >The ugen number, e.g. ugenx.y, depends upon how many USB devices are attached to the system.
 
    Navigate to ports/multimedia/webcamd.
    ```
