@@ -1,5 +1,5 @@
 # Freebsd-Acer-Nitro-Laptops-AN515-51/58-XXX
-Camera and mousepad 
+Enable camera and mousepad 
 
 # 14-stable and 14-release changes to enable webcam and mouspad
 
@@ -41,6 +41,26 @@ Camera and mousepad
    ```
    cd /usr/ports/multimedia/webcamd/work/linux-5.17-rc1/drivers/media/usb/uvc
    ```
-   Edit the _uvc_driver.c_ file.
+   Edit the _uvc_driver.c_ file. At the command prompt type:
+   ```
+   cp uvc_driver.c uvc_driver.c.ori
+   vi uvc_driver.c
+   ```
+   Save the original file prior to editing. On this Acer Nitro AN515-58-XXX laptop the USB webcam identified as 0x4035. Search for "Quanta" in the file. Add the    following code at the end of the "Quanta" section.
+   ```
+       /* Quanta ACER HD User Facing  0x4035 - Experimental */
+        { .match_flags  = USB_DEVICE_ID_MATCH_DEVICE
+                        | USB_DEVICE_ID_MATCH_INT_INFO,
+          .idVendor = 0x0408,
+          .idProduct = 0x4035,
+          .bInterfaceClass = USB_CLASS_VIDEO,
+          .bInterfaceSubClass = 1,
+          .bInterfaceProtocol = UVC_PC_PROTOCOL_15,
+          .driver_info = (kernel_ulong_t) &(const struct uvc_device_info ) {
+          .uvc_version = 0x010a, } },
+  ```
+
+  Note the comma before the start of the next section.
+   
    
    
