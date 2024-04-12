@@ -1,9 +1,109 @@
 # Freebsd-Acer-Nitro-Laptops-AN515-51/58-XXX
 
 
-## 14-stable and 14-release changes to enable webcam and mouspad
+## 14-stable and 14-release changes to enable mouspad and webcam
 
-1) Change the laptop mousepad from iic to psm protocol. Mousepad iic protocol is not supported. To do so one must enter the BIOS advanced mode.
+These laptops typically come in a variety of hardware sku configurations:
+  - AMD 7000 and above Ryzen cpus
+  - Intel I12/I13/I14 -500/700/900 cpus
+  - DDR4/DDR5 Ram
+  - Thunderbolt 4
+  - 165 Hz or 144 Hz display panels
+  - AMD Radeon Graphics
+  - Integrated Intel Graphics -P GT2 Iris Xe Graphics
+  - Nvidia 30XX or 40xx Graphics
+  - Integrated Intel WiFi 6/6E AX2XX series (sometimes referred to as Killer Wi-Fi 6 1650)
+  - Integrated Mediatek MT7921 WiFi or variants
+  - Killer Ethernet E2600 (was Realtek now Intel)
+  - Realtek and Nvidia Audio
+  - Bluetooth >= 5.1
+  - Integrated camera
+  - MicroSDTM Card Reader
+  - Internel - two (2) nvme drive connectors and one (1) SATA drive connector - three (3) internel drives total.
+
+**What you will get after installation:**
+  - Killer Ethernet network based Freebsd system using Intel i915 Xorg driver, 1920x1080 165 Hz screen, Intel integrated WiFi iwlwifi (Killer Wifi), mousepad,     USB wireless mouse support, audio, mutiple drives, USB.
+
+**What does not work:**
+  - Suspend/sleep keys, iic mousepad, Mediatek WiFi, bluetooth, microSDTM Card Reader.
+
+>[!Note]
+>This Freebsd installation was tested on Intel I5-12500 and Intel I7-12650 systems with Integrated Intel Graphics/Wifi, Nvidia 3050/4050 Graphics, and Killer Ethernet E2600.
+
+### **_Step-by step install procedure for mousepad and webcam:_**
+
+Typically these laptops are delived with Windows 11 installed on an internal 500 GB or 1 GD drive. Read the handbook to do a zfs root install.
+
+1) Add the following content to /etc/sysctl.conf, /boot/loader.conf, and /etc/rc.conf as a baseline.
+
+/boot/loader.conf
+```
+cryptodev_load="YES"
+zfs_load="YES"
+sysctlinfo_load="YES"
+sysctlbyname_improved_load="YES"
+cuse_load="YES"
+coretemp_load="YES"
+hint.iichid.0.disabled="1"
+vmm_load=”YES”
+nmdm_load="YES"
+```
+
+/etc/sysctl.conf
+```
+hw.snd.default_unit=1
+```
+
+/etc/rc.conf
+```
+# Basic services
+hostname="Elephant"
+keymap="us.kbd"
+#moused_enable="YES"
+dbus_enable="YES"
+#slim_enable="YES"
+update_motd="NO"
+devmatch_enable="YES"
+
+# Power
+powerd_enable="YES"
+powerd_flags="-n hiadaptive -a hiadaptive -b hiadaptive"
+performance_cx_lowest="Cmax"
+economy_cx_lowest="Cmax"
+
+# Misc
+zfs_enable="YES"
+fuse_load="YES"
+clear_tmp_enable="YES"
+ifconfig_re0="DHCP"
+microcode_update_enable="YES"
+
+# Wlan
+wlans_iwlwifi0="wlan1"
+ifconfig_wlan1="WPA DHCP"
+
+Misc1
+syslogd_flags="-ss"
+sendmail_enable="NO"
+sendmail_msp_queue_enable="NO"
+sendmail_outbound_enable="NO"
+sendmail_submit_enable="NO"
+ntpd_enable="NO"
+linux_enable="YES"
+webcamd_enable="YES"
+
+# Intel GPU drivers
+kld_list="i915kms fusefs acpi_video nmdm"
+
+# Packet filter
+pf_enable="YES"
+pf_rules="/etc/pf.conf" 
+pflog_enable="YES"
+pflog_logfile="/var/log/pflog"
+```
+
+
+3) Change the laptop mousepad from iic to psm protocol. Mousepad iic protocol is not supported. To do so one must enter the BIOS advanced mode.
   ```
     a) Press Fn+Tab three times. Reboot the laptop.
     b) Press F4, 4, R, V, F5, 5, T, G, B, F6, 6, Y, H, N while the laptop is turned off.
@@ -15,7 +115,7 @@
     f) Press F10 to save and exit.
 ```
 
-2) Be sure the _cuse_ module is loaded into the kernel. At the command prompt type:
+3) Be sure the _cuse_ module is loaded into the kernel. At the command prompt type:
    ```
    vi /boot/loader.conf
    ```
