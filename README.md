@@ -21,8 +21,8 @@ These laptops typically come in a variety of hardware sku configurations:
   - MicroSDTM Card Reader
   - Internel - two (2) nvme drive connectors and one (1) SATA drive connector - three (3) internel drives total.
 
-**What you will get after installation:**
-  - Killer Ethernet network based Freebsd system using Intel i915 Xorg driver, 1920x1080 165 Hz screen, Intel integrated WiFi iwlwifi (Killer Wifi), mousepad,     USB wireless mouse support, audio, mutiple drives, USB.
+**What you will get after installation of 14-stable or 15-current:**
+  - Killer Ethernet network based Freebsd system using drm Integrated Intel Graphics -P GT2 Iris Xe Graphics driver, 1920x1080 165 Hz screen, Intel integrated     WiFi iwlwifi (Killer Wifi), mousepad, USB wireless mouse support, audio, mutiple drives, USB.
 
 **What does not work:**
   - Suspend/sleep keys, iic mousepad, Mediatek WiFi, bluetooth, microSDTM Card Reader.
@@ -104,7 +104,7 @@ drive partition or a second drive. Both options require the use of rEFind https:
     ```
 
 
-3) Enable the mousepad. Change the laptop mousepad from iic to psm protocol as the iic protocol is not supported. To do so one must enter the BIOS advanced mode.
+2) Enable the mousepad. Change the laptop mousepad from iic to psm protocol as the iic protocol is not supported. To do so one must enter the BIOS advanced mode.
   ```
     a) Press Fn+Tab three times. Reboot the laptop.
     b) Press F4, 4, R, V, F5, 5, T, G, B, F6, 6, Y, H, N while the laptop is turned off.
@@ -246,11 +246,12 @@ drive partition or a second drive. Both options require the use of rEFind https:
     pwcview -d /dev/video0
     ```
 
-    The webcam green led will turn on and a new window opens with image. Tested with firefox, chromium, and zoom.
+    The webcam green led will turn on and a new window opens with image. Tested with firefox.
 
+5) _Caveats_
 
-   > [!IMPORTANT]
-   > <ins>Freebsd 14-stable/15-current:</ins> supports WiFi and Intel -P GT2 Iris Xe Graphics using drm-61-kmod. Wifi (iwlwifi) is problematic sometimes hanging the system and/or dropping connections. Freebsd 14-release (or less) does not support Intel WiFi or Graphics on this hardware platform as of March 2024. 
+   > [!NOTE]
+   > <ins>Freebsd 14-stable/15-current:</ins> support WiFi and Intel -P GT2 Iris Xe Graphics using drm-61-kmod. Wifi (iwlwifi) is problematic sometimes hanging the system and/or dropping connections. Freebsd 14-release (or less) does not support Intel WiFi or Graphics on this hardware platform as of March 2024. 
 
 
 
