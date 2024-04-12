@@ -130,7 +130,9 @@ drive partition or a second drive. Both options require the use of rEFind https:
    kldload cuse
    ```
 
-4) Change webcamd uvc_driver.c source file and rebuild. Determine that the webcam was detected at boot. At the command prompt type:
+4) Change webcamd uvc_driver.c source file and rebuild. (NOTE: the identical change was required for Ubuntu 23.10 on the same hardware.)
+
+   Determine that the webcam was detected at boot. At the command prompt type:
    ```
    lsusb
    ```
@@ -244,8 +246,11 @@ drive partition or a second drive. Both options require the use of rEFind https:
     pwcview -d /dev/video0
     ```
 
-    The webcam green led will turn on and a new window opens with image.
-    Tested with firefox, chromium, and zoom.
+    The webcam green led will turn on and a new window opens with image. Tested with firefox, chromium, and zoom.
+
+
+   > [!IMPORTANT]
+   > <ins>Freebsd 14-stable/15-current:</ins> supports WiFi and Intel -P GT2 Iris Xe Graphics using drm-61-kmod. Wifi (iwlwifi) is problematic sometimes hanging the system and/or dropping connections. Freebsd 14-release (or less) does not support Intel WiFi or Graphics on this hardware platform as of March 2024. 
 
 
 
