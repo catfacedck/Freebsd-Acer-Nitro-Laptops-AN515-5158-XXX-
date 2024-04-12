@@ -101,7 +101,7 @@ Show webcamd usage:
 webcamd -h
 ```
 
-Run webcamd with the camera aruments shown in the output above. At the command prompt type:
+Run webcamd with the camera arguments shown in the output above. At the command prompt type:
 ```
 /usr/ports/multimedia/webcamd]# webcamd -d ugen1.3 -N Quanta-ACER-HD-User-Facing -S 01-00-00 -M 0
 ```
@@ -113,7 +113,7 @@ webcamd 73114 - - Creating /dev/video0
 webcamd 73114 - - Creating /dev/video1
 ```
 
-Any video application may use the _/dev/videoX_ device nodes. At the command prompt type:
+Video applications may now use the _/dev/videoX_ device nodes. At the command prompt type:
 ```
 pkg install pwcview
 pwcview
@@ -134,7 +134,7 @@ The device nodes _/dev/videoX_ are owned by webcamd. To make them accessible to 
 vi /etc/group
 ```
 
-Add $USER to the _webcamd_ group so they may access the laptop webcam. 
+Add $USER to the _webcamd_ group to access the laptop webcam. 
 ```
 webcamd:*:145:$USER
 ```
