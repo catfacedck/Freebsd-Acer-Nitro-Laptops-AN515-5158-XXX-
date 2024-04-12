@@ -1,7 +1,7 @@
 # Freebsd-Acer-Nitro-Laptops-AN515-51/58-XXX
-Enable camera and mousepad 
 
-# 14-stable and 14-release changes to enable webcam and mouspad
+
+## 14-stable and 14-release changes to enable webcam and mouspad
 
 1) Change the laptop mousepad from iic to psm protocol. Mousepad iic protocol is not supported. To do so one must enter the BIOS advanced mode.
   ```
@@ -23,8 +23,9 @@ Enable camera and mousepad
    ```
    Bus /dev/usb Device /dev/ugen1.3: ID 0408:4035 Quanta Computer, Inc.
    ```
-   This same information is provided by _dmesg_:
+   This same information is provided by _usbconfig_ and _dmesg_:
    ```
+   ugen1.3: <Quanta ACER HD User Facing> at usbus1, cfg=0 md=HOST spd=HIGH (480Mbps) pwr=ON (500mA)
    ugen1.3: <Quanta ACER HD User Facing> at usbus1
    ```
    
@@ -46,8 +47,8 @@ Enable camera and mousepad
    cp uvc_driver.c uvc_driver.c.ori
    vi uvc_driver.c
    ```
-   Save the original file prior to editing. On this Acer Nitro AN515-58-XXX laptop the USB webcam identified as 0x4035. Search for "Quanta" in the file. Add the    following code at the end of the "Quanta" section.
-   ```
+   Save the original file prior to editing. On this Acer Nitro AN515-58-XXX laptop the USB webcam identified as 0x4035 (see above). Search for "Quanta" in the     file and add thefollowing code at the end of the "Quanta" section.
+   
        /* Quanta ACER HD User Facing  0x4035 - Experimental */
         { .match_flags  = USB_DEVICE_ID_MATCH_DEVICE
                         | USB_DEVICE_ID_MATCH_INT_INFO,
@@ -58,7 +59,7 @@ Enable camera and mousepad
           .bInterfaceProtocol = UVC_PC_PROTOCOL_15,
           .driver_info = (kernel_ulong_t) &(const struct uvc_device_info ) {
           .uvc_version = 0x010a, } },
-  ```
+  
 
   Note the comma before the start of the next section.
    
