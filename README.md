@@ -1,7 +1,7 @@
 # Freebsd on Acer Nitro AN515-51/58-XXX Series Laptops
 
 
-## 14-stable and 15-current changes to enable mouspad and webcam
+## 14-stable changes to enable mouspad and webcam
 
 These laptops typically come in a variety of hardware sku configurations:
   - AMD 7000 and above Ryzen cpus
@@ -248,7 +248,7 @@ drive partition or a second drive. Both options require the use of rEFind https:
 
     The webcam green led will turn on and a new window opens with image. Tested with firefox.
 
-5) _Caveats_
+5) 
 
    > [!NOTE]
    > <ins>Freebsd 14-stable/15-current:</ins> support WiFi and Intel -P GT2 Iris Xe Graphics using drm-61-kmod. Wifi (iwlwifi) is problematic sometimes hanging the system and/or dropping connections. Freebsd 14-release (or less) does not support Intel WiFi or Graphics on this hardware platform as of March 2024. 
