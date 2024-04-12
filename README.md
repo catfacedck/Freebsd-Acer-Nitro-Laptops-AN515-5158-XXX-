@@ -134,7 +134,17 @@ The device nodes _/dev/videoX_ are owned by webcamd. To make them accessible to 
 vi /etc/group
 ```
 
-Add $USER to the _webcamd_ group so they may access the laptop webcam. Tested with firefox, chromium, and zoom.
+Add $USER to the _webcamd_ group so they may access the laptop webcam. 
+```
+webcamd:*:145:$USER
+```
+Where $USER is the current login name. Login as $USER. At the command prompt type:
+```
+pwcview -d /dev/video0
+```
+
+The webcam green led will turn on and a new window opens with image.
+Tested with firefox, chromium, and zoom.
 
 
 
