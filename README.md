@@ -15,7 +15,21 @@
     f) Press F10 to save and exit.
 ```
 
-2) Change webcamd uvc_driver.c source file and rebuild. First, dtermine that the webcam was detected at boot. At the command prompt type:
+2) Be sure the _cuse_ module is loaded into the kernel. At the command prompt type:
+   ```
+   vi /boot/loader.conf
+   ```
+   Add this line to the file.
+   ```
+   cuse_load="YES"
+   ```
+
+   To load the module on the fly type at the command prompt:
+   ```
+   kldload cuse
+   ```
+
+4) Change webcamd uvc_driver.c source file and rebuild. Determine that the webcam was detected at boot. At the command prompt type:
    ```
    lsusb
    ```
@@ -47,7 +61,7 @@
    cp uvc_driver.c uvc_driver.c.ori
    vi uvc_driver.c
    ```
-   Save the original file prior to editing. On this Acer Nitro AN515-58-XXX laptop the USB webcam identified as 0x4035 (see above). Search for "Quanta" in the     file and add thefollowing code at the end of the "Quanta" section.
+   Save the original file prior to editing. On this Acer Nitro AN515-58-XXX laptop the USB webcam identified as 0x4035 (see above). Search for "Quanta" in the     file and add the following code at the end of the "Quanta" section.
    
        /* Quanta ACER HD User Facing  0x4035 - Experimental */
         { .match_flags  = USB_DEVICE_ID_MATCH_DEVICE
@@ -61,7 +75,17 @@
           .uvc_version = 0x010a, } },
   
 
-  Note the comma before the start of the next section.
+  Note the ending comma "," before the start of the next section.
+
+  Build webcamd. 
+  ```
+  cd /usr/ports/multimedia/webcamd
+  make
+  make install
+  ```
+
+Test the webcam. 
+
    
    
    
