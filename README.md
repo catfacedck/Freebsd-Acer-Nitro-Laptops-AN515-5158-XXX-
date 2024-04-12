@@ -1,4 +1,4 @@
-# Freebsd-Acer-Nitro-Laptops-AN515-51/58-XXX
+# Freebsd on Acer Nitro AN515-51/58-XXX Series Laptops
 
 
 ## 14-stable and 14-release changes to enable mouspad and webcam
