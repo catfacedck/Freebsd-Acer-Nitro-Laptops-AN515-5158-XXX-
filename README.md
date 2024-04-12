@@ -22,7 +22,8 @@ These laptops typically come in a variety of hardware sku configurations:
   - Internel - two (2) nvme drive connectors and one (1) SATA drive connector - three (3) internel drives total.
 
 **What you will get after installation of 14-stable or 15-current:**
-  - Killer Ethernet network based Freebsd system using drm Integrated Intel Graphics -P GT2 Iris Xe Graphics driver, 1920x1080 165 Hz screen, Intel integrated     WiFi iwlwifi (Killer Wifi), mousepad, USB wireless mouse support, audio, mutiple drives, USB.
+  - Killer Ethernet network based Freebsd system using drm-61-kmod Integrated Intel Graphics -P GT2 Iris Xe Graphics driver, 1920x1080 165 Hz screen, Intel integrated     WiFi iwlwifi (Killer Wifi), mousepad, USB wireless mouse support, audio, mutiple drives, USB.
+  - drm-61-kmod built from ports.
 
 **What does not work:**
   - Suspend/sleep keys, iic mousepad, Mediatek WiFi, bluetooth, microSDTM Card Reader.
@@ -251,7 +252,7 @@ drive partition or a second drive. Both options require the use of rEFind https:
 5) 
 
    > [!NOTE]
-   > <ins>Freebsd 14-stable/15-current:</ins> support WiFi and Intel -P GT2 Iris Xe Graphics using drm-61-kmod. Wifi (iwlwifi) is problematic sometimes hanging the system and/or dropping connections. Freebsd 14-release (or less) does not support Intel WiFi or Graphics on this hardware platform as of March 2024. 
+   > <ins>Freebsd 14-stable/15-current:</ins> support WiFi and Intel -P GT2 Iris Xe Graphics using drm-61-kmod (stable/14-87c7f74ff). Wifi (iwlwifi) is problematic sometimes hanging the system and/or dropping connections. Freebsd 14-release (or less) does not support Intel WiFi or Graphics on this hardware platform as of March 20, 2024. 
 
 
 
