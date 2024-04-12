@@ -36,74 +36,74 @@ Typically these laptops are delived with Windows 11 installed on an internal 500
 
 1) Add the following content to /etc/sysctl.conf, /boot/loader.conf, and /etc/rc.conf as a baseline.
 
-/boot/loader.conf
-```
-cryptodev_load="YES"
-zfs_load="YES"
-sysctlinfo_load="YES"
-sysctlbyname_improved_load="YES"
-cuse_load="YES"
-coretemp_load="YES"
-hint.iichid.0.disabled="1"
-vmm_load=”YES”
-nmdm_load="YES"
-```
+    /boot/loader.conf
+    ```
+    cryptodev_load="YES"
+    zfs_load="YES"
+    sysctlinfo_load="YES"
+    sysctlbyname_improved_load="YES"
+    cuse_load="YES"
+    coretemp_load="YES"
+    hint.iichid.0.disabled="1"
+    vmm_load=”YES”
+    nmdm_load="YES"
+    ```
 
-/etc/sysctl.conf
-```
-hw.snd.default_unit=1
-```
+    /etc/sysctl.conf
+    ```
+    hw.snd.default_unit=1
+    ```
 
-/etc/rc.conf
-```
-# Basic services
-hostname="Elephant"
-keymap="us.kbd"
-#moused_enable="YES"
-dbus_enable="YES"
-#slim_enable="YES"
-update_motd="NO"
-devmatch_enable="YES"
+     /etc/rc.conf
+    ```
+    # Basic services
+    hostname="Elephant"
+    keymap="us.kbd"
+    #moused_enable="YES"
+    dbus_enable="YES"
+    #slim_enable="YES"
+    update_motd="NO"
+    devmatch_enable="YES"
 
-# Power
-powerd_enable="YES"
-powerd_flags="-n hiadaptive -a hiadaptive -b hiadaptive"
-performance_cx_lowest="Cmax"
-economy_cx_lowest="Cmax"
+    # Power
+    powerd_enable="YES"
+    powerd_flags="-n hiadaptive -a hiadaptive -b hiadaptive"
+    performance_cx_lowest="Cmax"
+    economy_cx_lowest="Cmax"
 
-# Misc
-zfs_enable="YES"
-fuse_load="YES"
-clear_tmp_enable="YES"
-ifconfig_re0="DHCP"
-microcode_update_enable="YES"
+    # Misc
+    zfs_enable="YES"
+    fuse_load="YES"
+    clear_tmp_enable="YES"
+    ifconfig_re0="DHCP"
+    microcode_update_enable="YES"
 
-# Wlan
-wlans_iwlwifi0="wlan1"
-ifconfig_wlan1="WPA DHCP"
+    # Wlan
+    wlans_iwlwifi0="wlan1"
+    ifconfig_wlan1="WPA DHCP"
 
-Misc1
-syslogd_flags="-ss"
-sendmail_enable="NO"
-sendmail_msp_queue_enable="NO"
-sendmail_outbound_enable="NO"
-sendmail_submit_enable="NO"
-ntpd_enable="NO"
-linux_enable="YES"
-webcamd_enable="YES"
+    Misc1
+    syslogd_flags="-ss"
+    sendmail_enable="NO"
+    sendmail_msp_queue_enable="NO"
+    sendmail_outbound_enable="NO"
+    sendmail_submit_enable="NO"
+    ntpd_enable="NO"
+    linux_enable="YES"
+    webcamd_enable="YES"
 
-# Intel GPU drivers
-kld_list="i915kms fusefs acpi_video nmdm"
+    # Intel GPU drivers
+    kld_list="i915kms fusefs acpi_video nmdm"
 
-# Packet filter
-pf_enable="YES"
-pf_rules="/etc/pf.conf" 
-pflog_enable="YES"
-pflog_logfile="/var/log/pflog"
-```
+    # Packet filter
+    pf_enable="YES"
+    pf_rules="/etc/pf.conf" 
+    pflog_enable="YES"
+    pflog_logfile="/var/log/pflog"
+    ```
 
 
-3) Change the laptop mousepad from iic to psm protocol. Mousepad iic protocol is not supported. To do so one must enter the BIOS advanced mode.
+3) Enable the mousepad. Change the laptop mousepad from iic to psm protocol as the iic protocol is not supported. To do so one must enter the BIOS advanced mode.
   ```
     a) Press Fn+Tab three times. Reboot the laptop.
     b) Press F4, 4, R, V, F5, 5, T, G, B, F6, 6, Y, H, N while the laptop is turned off.
@@ -115,7 +115,7 @@ pflog_logfile="/var/log/pflog"
     f) Press F10 to save and exit.
 ```
 
-3) Be sure the _cuse_ module is loaded into the kernel. At the command prompt type:
+3) Enable the webcam. Be sure the _cuse_ module is loaded into the kernel. At the command prompt type:
    ```
    vi /boot/loader.conf
    ```
