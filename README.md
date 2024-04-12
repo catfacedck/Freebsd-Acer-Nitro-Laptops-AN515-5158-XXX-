@@ -84,7 +84,37 @@
   make install
   ```
 
-Test the webcam. 
+Test the webcam. At the command prompt type:
+```
+webcamd
+```
+
+A list of USB devices should be shown.
+```
+Available device(s):
+webcamd [-d ugen0.1] -N Intel-XHCI-root-HUB -S unknown -M 0
+webcamd [-d ugen1.1] -N Intel-XHCI-root-HUB -S unknown -M 1
+webcamd [-d ugen1.2] -N vendor-0x1ea7-2-4G-Mouse -S unknown -M 0
+webcamd [-d ugen1.3] -N Quanta-ACER-HD-User-Facing -S 01-00-00 -M 0
+webcamd [-d ugen1.4] -N vendor-0x8087-product-0x0026 -S unknown -M 0
+Show webcamd usage:
+webcamd -h
+```
+
+Run webcamd with the aruments shown in the output above. At the command prompt type:
+```
+/usr/ports/multimedia/webcamd]# webcamd -d ugen1.3 -N Quanta-ACER-HD-User-Facing -S 01-00-00 -M 0
+```
+
+One should see webcamd attach to the video devices.
+```
+webcamd 73114 - - Attached to ugen1.3[0]
+webcamd 73114 - - Creating /dev/video0
+webcamd 73114 - - Creating /dev/video1
+```
+
+
+
 
    
    
