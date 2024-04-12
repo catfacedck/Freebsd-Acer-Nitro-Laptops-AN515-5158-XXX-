@@ -30,9 +30,15 @@ Camera and mousepad
    If the webcam was not detected by the system go look for the trouble before continuing. On this hardware a variety of Quanta products IDs may be shown.
 
 
-   > [ !NOTE]
+
+
+
+   > [!IMPORTANT]
    > The ugen number, e.g. ugenx.y, depends upon how many USB devices are attached to the system.
-   
+
+
+
+
 
    Navigate to ports/multimedia/webcamd.
    ```
