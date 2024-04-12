@@ -1,2 +1,2 @@
-# Freebsd-Acer-Nitro-Laptops-AN515-5158-XXX-
+# Freebsd-Acer-Nitro-Laptops-AN515-51/58-XXX
 Camera and mousepad 
