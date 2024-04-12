@@ -101,7 +101,7 @@ Show webcamd usage:
 webcamd -h
 ```
 
-Run webcamd with the aruments shown in the output above. At the command prompt type:
+Run webcamd with the camera aruments shown in the output above. At the command prompt type:
 ```
 /usr/ports/multimedia/webcamd]# webcamd -d ugen1.3 -N Quanta-ACER-HD-User-Facing -S 01-00-00 -M 0
 ```
@@ -112,6 +112,29 @@ webcamd 73114 - - Attached to ugen1.3[0]
 webcamd 73114 - - Creating /dev/video0
 webcamd 73114 - - Creating /dev/video1
 ```
+
+Any video application may use the _/dev/videoX_ device nodes. At the command prompt type:
+```
+pkg install pwcview
+pwcview
+```
+
+The webcam green led will turn on and a new window opens with image.
+To make the _webcamd_ start at boot, at the command prompt type:
+   ```
+   vi /etc/rc.conf
+   ```
+   Add this line to the file.
+   ```
+   webcamd_enable="YES"
+  ```
+
+The device nodes _/dev/videoX_ are owned by webcamd. To make them accessible to $USER at the command prompt type:
+```
+chown $USER
+
+
+
 
 
 
