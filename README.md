@@ -248,10 +248,10 @@ drive partition or a second drive. Both options require the use of rEFind https:
 
     The webcam green led will turn on and a new window opens with image. Tested with firefox.
 
-5) 
+5) Tested with firefox.
 
    > [!NOTE]
-   > <ins>Freebsd 14-stable/15-current:</ins> support WiFi and Intel -P GT2 Iris Xe Graphics using drm-61-kmod (stable/14-87c7f74ff). Wifi (iwlwifi) is problematic sometimes hanging the system and/or dropping connections. Freebsd 14-release (or less) does not support Intel WiFi or Graphics on this hardware platform as of March 20, 2024. 
+   > <ins>Freebsd 14-stable/15-current:</ins> support WiFi and Intel -P GT2 Iris Xe Graphics using drm-61-kmod or later (stable/14-n267634). Wifi (iwlwifi) is problematic sometimes hanging the system and/or dropping connections. Freebsd 14-release (or less) does not support Intel WiFi or Graphics on this hardware platform as of March 20, 2024. 
 
 
 
